@@ -1314,13 +1314,12 @@ class Nf3 {
     @param {object} transaction
     @returns {object} A promise that resolves to the API call status
    */
-  async forwardOffchainTransaction(transaction) {
+  async forwardOffchainTransaction(transaction, signature) {
     const res = await axios.post(
       `${this.optimistBaseUrl}/proposer/offchain-transaction`,
-      { transaction },
+      { transaction, signature },
       { timeout: 3600000 },
     );
-    console.log(`FORWARDING TO ${this.optimistBaseUrl}/proposer/offchain-transaction`);
     return res;
   }
 
